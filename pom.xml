@@ -35,9 +35,6 @@
     					<region>us-east-1</region>
     					<workers>1</workers>
     					<workerType>MICRO</workerType>
-    					<properties>
-    						<key></key>
-    					</properties>
 					</cloudHubDeployment>
 				</configuration>
 			</plugin>
