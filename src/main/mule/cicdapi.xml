@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+<mule xmlns:api-gateway="http://www.mulesoft.org/schema/mule/api-gateway" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/api-gateway http://www.mulesoft.org/schema/mule/api-gateway/current/mule-api-gateway.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a3164ec1-de52-4811-87ec-a4d0fcd465e2" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
+	<api-gateway:autodiscovery apiId="17573794" ignoreBasePath="true" doc:name="API Autodiscovery" doc:id="ec2325cc-f732-41da-bade-9c95ba468dd1" flowRef="cicdapiFlow" />
 	<flow name="cicdapiFlow" doc:id="fc7b6bf8-cace-4d3c-a126-3d67bd119f0a" >
 		<http:listener doc:name="Listener" doc:id="1a7a26f5-7a97-4c62-8a89-b0771a9aaf32" config-ref="HTTP_Listener_config" path="/cicd"/>
 		<ee:transform doc:name="Transform Message" doc:id="b0d5b3da-7a69-430b-ad20-82c41fb16971" >
